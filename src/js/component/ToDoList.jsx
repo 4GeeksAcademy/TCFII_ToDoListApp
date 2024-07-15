@@ -22,7 +22,7 @@ const handleEnterKey = (ev) => {
     }
 };
 const handleDelete = (index) => {
-    const newTodos = todos.filter((todos) => todos.index !== index);
+    const newTodos = todos.filter((todos,id) => id !== index);
     setTodos(newTodos);
 };
 
@@ -41,8 +41,9 @@ return (
         <ul>
             {todos.map((todos,index) => (
                 <li className="flex justify-between mr-2" key={index}>{todos} {index}
-                <button onClick={() => handleDelete (todos.index)} class="ml-auto text-[10px] text-white hover:text-red-500 rounded">
-                    X
+                <button class="ml-auto text-[10px] text-white hover:text-red-500 rounded"
+                    onClick={() => handleDelete (index)}>
+                    X {index}
                 </button>
                 </li>
             ))}
